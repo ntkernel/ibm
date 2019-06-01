@@ -11,7 +11,11 @@ ranlib lib/libncurses.a
 ranlib lib/libssl.a
 ranlib lib/libz.a
 ranlib code/vpnserver.a
-gcc code/vpnserver.a -o vpnserver
+gcc  -O2 -fsigned-char -pthread -m64 -lm -ldl -lrt -lpthread -L./ lib/lib
+ssl.a lib/libcrypto.a lib/libiconv.a lib/libcharset.a lib/libedit.a lib/libncurses.a lib/libz
+.a lib/libintelaes.a code/vpnserver.a -o vpnserver
 ranlib code/vpncmd.a
-gcc code/vpncmd.a -o vpncmd
+gcc  -O2 -fsigned-char -pthread -m64 -lm -ldl -lrt -lpthread -L./ lib/lib
+ssl.a lib/libcrypto.a lib/libiconv.a lib/libcharset.a lib/libedit.a lib/libncurses.a lib/libz
+.a lib/libintelaes.a code/vpncmd.a -o vpncmd
 ./vpncmd /tool /cmd:Check
